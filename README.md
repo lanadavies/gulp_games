@@ -1,24 +1,25 @@
-# README
+# Gulp Games
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a tournament application where people can enter and compete against each other in various drinking games. Participants can join the tournament by scanning a QR code. The application will then generate a tournament structure for the games.
 
-Things you may want to cover:
+## Technologies Used
 
-* Ruby version
+* Ruby on Rails
+* PostgreSQL
+* Pusher (for WebSockets)
 
-* System dependencies
+## Configuration
 
-* Configuration
+To configure the application, follow these steps:
 
-* Database creation
+1. Clone the repository
+2. Install the necessary gems with `bundle install`
+3. Set up your database credentials in `config/database.yml`
+4. Set up your Pusher credentials in `config/pusher.yml`
 
-* Database initialization
+## Database Creation
 
-* How to run the test suite
+To create the database, run:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```bash
+rails db:create
