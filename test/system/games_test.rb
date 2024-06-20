@@ -16,7 +16,7 @@ class GamesTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @game.name
     fill_in "Tournament", with: @game.tournament_id
-    check "Two player" if @game.two_player
+    check "Two contestant" if @game.two_contestant
     click_on "Create Game"
 
     assert_text "Game was successfully created"
@@ -29,7 +29,7 @@ class GamesTest < ApplicationSystemTestCase
 
     fill_in "Name", with: @game.name
     fill_in "Tournament", with: @game.tournament_id
-    check "Two player" if @game.two_player
+    check "Two contestant" if @game.two_contestant
     click_on "Update Game"
 
     assert_text "Game was successfully updated"

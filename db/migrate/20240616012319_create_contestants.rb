@@ -1,6 +1,6 @@
-class CreatePlayers < ActiveRecord::Migration[7.1]
+class CreateContestants < ActiveRecord::Migration[7.1]
   def change
-    create_table :players do |t|
+    create_table :contestants do |t|
       t.string :name
       t.references :tournament, null: false, foreign_key: true
 

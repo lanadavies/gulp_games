@@ -1,43 +1,43 @@
 require "application_system_test_case"
 
-class PlayersTest < ApplicationSystemTestCase
+class ContestantsTest < ApplicationSystemTestCase
   setup do
-    @player = players(:one)
+    @contestant = contestants(:one)
   end
 
   test "visiting the index" do
-    visit players_url
-    assert_selector "h1", text: "Players"
+    visit contestants_url
+    assert_selector "h1", text: "Contestants"
   end
 
-  test "should create player" do
-    visit players_url
-    click_on "New player"
+  test "should create contestant" do
+    visit contestants_url
+    click_on "New contestant"
 
-    fill_in "Name", with: @player.name
-    fill_in "Tournament", with: @player.tournament_id
-    click_on "Create Player"
+    fill_in "Name", with: @contestant.name
+    fill_in "Tournament", with: @contestant.tournament_id
+    click_on "Create Contestant"
 
-    assert_text "Player was successfully created"
+    assert_text "Contestant was successfully created"
     click_on "Back"
   end
 
-  test "should update Player" do
-    visit player_url(@player)
-    click_on "Edit this player", match: :first
+  test "should update Contestant" do
+    visit contestant_url(@contestant)
+    click_on "Edit this contestant", match: :first
 
-    fill_in "Name", with: @player.name
-    fill_in "Tournament", with: @player.tournament_id
-    click_on "Update Player"
+    fill_in "Name", with: @contestant.name
+    fill_in "Tournament", with: @contestant.tournament_id
+    click_on "Update Contestant"
 
-    assert_text "Player was successfully updated"
+    assert_text "Contestant was successfully updated"
     click_on "Back"
   end
 
-  test "should destroy Player" do
-    visit player_url(@player)
-    click_on "Destroy this player", match: :first
+  test "should destroy Contestant" do
+    visit contestant_url(@contestant)
+    click_on "Destroy this contestant", match: :first
 
-    assert_text "Player was successfully destroyed"
+    assert_text "Contestant was successfully destroyed"
   end
 end

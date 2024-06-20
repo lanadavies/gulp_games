@@ -3,9 +3,9 @@
 one:
   name: MyString
   tournament: one
-  two_player: false
+  two_contestant: false
 
 two:
   name: MyString
   tournament: two
-  two_player: false
+  two_contestant: false

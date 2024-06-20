@@ -1,0 +1,5 @@
+<%= form_with url: "/enter" do |form| %>
+  <%= form.label :game, "Enter game number:" %>
+  <%= form.text_field :game %>
+  <%= form.submit "Enter" %>
+<% end %>

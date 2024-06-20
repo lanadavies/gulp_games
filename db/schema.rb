@@ -14,6 +14,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_013107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "contestants", force: :cascade do |t|
+    t.string "name"
+    t.bigint "tournament_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tournament_id"], name: "index_contestants_on_tournament_id"
+  end
+
   create_table "games", force: :cascade do |t|
     t.string "name"
     t.bigint "tournament_id", null: false
@@ -23,17 +31,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_013107) do
     t.index ["tournament_id"], name: "index_games_on_tournament_id"
   end
 
-  create_table "players", force: :cascade do |t|
-    t.string "name"
-    t.bigint "tournament_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["tournament_id"], name: "index_players_on_tournament_id"
-  end
-
   create_table "rounds", force: :cascade do |t|
     t.bigint "tournament_id", null: false
-    t.bigint "winner_id", null: false
+    t.bigint "winner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["tournament_id"], name: "index_rounds_on_tournament_id"
@@ -42,9 +42,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_013107) do
 
   create_table "tournaments", force: :cascade do |t|
     t.string "name"
+    t.string "code", null: false
     t.bigint "user_id", null: false
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["code"], name: "index_tournaments_on_code", unique: true
     t.index ["user_id"], name: "index_tournaments_on_user_id"
   end
 
@@ -60,9 +63,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_013107) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contestants", "tournaments"
   add_foreign_key "games", "tournaments"
-  add_foreign_key "players", "tournaments"
-  add_foreign_key "rounds", "players", column: "winner_id"
+  add_foreign_key "rounds", "contestants", column: "winner_id"
   add_foreign_key "rounds", "tournaments"
   add_foreign_key "tournaments", "users"
 end
